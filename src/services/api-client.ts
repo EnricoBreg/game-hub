@@ -5,6 +5,6 @@ export default axios.create({
   params: {
     // rawg api key, non è buona pratica
     // metterla in chiaro così, solo a scopi educativi
-    key: "7e8943685b3d4fbc8baa3828258a65f8",
+    key: "932d9af763714c16831f7933e6a05313",
   },
 });
