@@ -11,7 +11,7 @@ import {
 import useGenres, { Genre } from "../hooks/useGenres";
 import getCroppedImageUrl from "../services/images-url";
 import GenreItemSkeleton from "./GenreItemSkeleton";
-import GenreItemContainer from "./GenreItemContainer";
+import GenreContainer from "./GenreContainer";
 
 interface Props {
   onSelectGenre: (genre: Genre) => void;
@@ -24,22 +24,24 @@ const GenreList = ({ selectedGenre, onSelectGenre }: Props) => {
 
   if (error) return null;
   if (isLoading) {
-    return skeletons.map((skeleton) => (
-      <GenreItemContainer key={skeleton}>
-        <GenreItemSkeleton />
-      </GenreItemContainer>
-    ));
+    return (
+      <GenreContainer>
+        {skeletons.map((genre) => (
+          <GenreItemSkeleton />
+        ))}
+      </GenreContainer>
+    );
   }
 
   return (
-    <>
+    <GenreContainer>
       <Heading fontSize="2xl" marginBottom={3}>
         Genres
       </Heading>
       <List>
         {data.map((genre) => (
           <ListItem key={genre.id}>
-            <GenreItemContainer>
+            <HStack paddingY="5px">
               <Image
                 boxSize="32px"
                 borderRadius="8px"
@@ -56,11 +58,11 @@ const GenreList = ({ selectedGenre, onSelectGenre }: Props) => {
               >
                 {genre.name}
               </Button>
-            </GenreItemContainer>
+            </HStack>
           </ListItem>
         ))}
       </List>
-    </>
+    </GenreContainer>
   );
 };
 
