@@ -32,9 +32,7 @@ function App() {
     >
       <GridItem area="nav">
         <NavBar
-          onSearch={(seachText) =>
-            setGameQuery({ ...gameQuery, searchText: seachText })
-          }
+          onSearch={(searchText) => setGameQuery({ ...gameQuery, searchText })}
         />
       </GridItem>
       <Show above="lg">
@@ -52,7 +50,7 @@ function App() {
             <Box marginRight={5}>
               <PlatformSelector
                 selectedPlatform={gameQuery.platform}
-                onSelectePlatform={(platform) =>
+                onSelectPlatform={(platform) =>
                   setGameQuery({ ...gameQuery, platform })
                 }
               />
