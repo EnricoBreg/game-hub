@@ -15,7 +15,7 @@ const ExpandableText = ({ children }: Props) => {
   const summary = isExpanded ? children : children.substring(0, limit) + "...";
 
   return (
-    <Text>
+    <Text align="justify">
       {summary}
       <Button
         size="xs"
